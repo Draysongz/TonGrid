@@ -1,0 +1,172 @@
+/* TonGrid Dashboard Styles */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05060B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(46, 214, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(46, 214, 255, 0.5);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(46, 214, 255, 0.3);
+  color: #F4F6FA;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #2ED6FF;
+  outline-offset: 2px;
+}
+
+/* Glass card base styles */
+.glass-card {
+  background: rgba(11, 14, 22, 0.72);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(244, 246, 250, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.glass-panel {
+  background: rgba(11, 14, 22, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(244, 246, 250, 0.08);
+  border-radius: 16px;
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(90deg, #2ED6FF 0%, #2B7DFF 100%);
+  color: #05060B;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(46, 214, 255, 0.4);
+}
+
+.btn-outline {
+  padding: 0.625rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  border: 1px solid rgba(46, 214, 255, 0.5);
+  color: #2ED6FF;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(46, 214, 255, 0.1);
+  border-color: #2ED6FF;
+  box-shadow: 0 0 30px rgba(46, 214, 255, 0.2);
+}
+
+/* Text gradient */
+.text-gradient-cyan {
+  background: linear-gradient(90deg, #2ED6FF 0%, #2B7DFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effects */
+.shadow-glow {
+  box-shadow: 0 0 60px rgba(46, 214, 255, 0.3), 0 0 120px rgba(46, 214, 255, 0.15);
+}
+
+.shadow-glow-violet {
+  box-shadow: 0 0 60px rgba(123, 97, 255, 0.3), 0 0 120px rgba(123, 97, 255, 0.15);
+}
+
+/* Card hover effects */
+.glass-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.6);
+}
+
+/* Matrix slot animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(46, 214, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(46, 214, 255, 0.6);
+  }
+}
+
+.slot-filled {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Number counter animation */
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-count {
+  animation: count-up 0.5s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .glass-card {
+    backdrop-filter: blur(12px);
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 0 !important;
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
