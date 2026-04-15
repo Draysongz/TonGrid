@@ -21,7 +21,7 @@ export default function X6Matrix({ level, row1, row2, userAddress }: X6MatrixPro
   const truncate = (addr: string) => `${addr.slice(0, 4)}...${addr.slice(-4)}`;
 
   return (
-    <div className="glass-card p-6 relative overflow-hidden">
+    <div className="glass-card p-6 relative overflow-hidden flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
@@ -40,8 +40,8 @@ export default function X6Matrix({ level, row1, row2, userAddress }: X6MatrixPro
         </div>
       </div>
 
-      {/* Matrix Visualization */}
-      <div className="relative py-4">
+      {/* Matrix Visualization - Flex grow to push cards down */}
+      <div className="relative py-4 flex-grow">
         {/* Row 1 - Upline Row */}
         <div className="mb-8">
           <p className="text-tongrid-gray/60 text-xs font-mono uppercase tracking-wider mb-3">
@@ -137,13 +137,13 @@ export default function X6Matrix({ level, row1, row2, userAddress }: X6MatrixPro
           <div>
             <p className="text-tongrid-gray text-xs">Your X6 Earnings (Level {level})</p>
             <p className="font-mono font-bold text-tongrid-cyan text-xl">
-              +{(row2.filter(s => s.filled).length * 0.9).toFixed(2)} TON
+              +{(totalFilled * 0.9).toFixed(2)} TON
             </p>
           </div>
           <div className="text-right">
-            <p className="text-tongrid-gray text-xs">Spillover Slots</p>
+            <p className="text-tongrid-gray text-xs">All Slots Filled</p>
             <p className="font-mono text-tongrid-white text-lg">
-              {row2Filled}/4
+              {totalFilled}/6
             </p>
           </div>
         </div>

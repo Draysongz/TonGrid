@@ -26,24 +26,24 @@ export interface ContractConfig {
 
 const ADDRESSES = {
     testnet: {
-        main: process.env.NEXT_PUBLIC_MAIN_CONTRACT_TESTNET ?? '',
-        pool: process.env.NEXT_PUBLIC_POOL_CONTRACT_TESTNET ?? '',
+        main: import.meta.env.VITE_PUBLIC_MAIN_CONTRACT_TESTNET ?? '',
+        pool: import.meta.env.VITE_PUBLIC_POOL_CONTRACT_TESTNET ?? '',
     },
     mainnet: {
-        main: process.env.NEXT_PUBLIC_MAIN_CONTRACT_MAINNET ?? '',
-        pool: process.env.NEXT_PUBLIC_POOL_CONTRACT_MAINNET ?? '',
+        main: import.meta.env.VITE_PUBLIC_MAIN_CONTRACT_MAINNET ?? '',
+        pool: import.meta.env.VITE_PUBLIC_POOL_CONTRACT_MAINNET ?? '',
     },
 } as const;
 
 const RPC = {
-    testnet: process.env.NEXT_PUBLIC_TONCENTER_TESTNET ?? 'https://testnet.toncenter.com/api/v2',
-    mainnet: process.env.NEXT_PUBLIC_TONCENTER_MAINNET ?? 'https://toncenter.com/api/v2',
+    testnet: import.meta.env.VITE_PUBLIC_TONCENTER_TESTNET ?? 'https://testnet.toncenter.com/api/v2',
+    mainnet: import.meta.env.VITE_PUBLIC_TONCENTER_MAINNET ?? 'https://toncenter.com/api/v2',
 } as const;
 
 // ── Config getter ────────────────────────────────────────────────
 
 export function getConfig(): ContractConfig {
-    const network = (process.env.NEXT_PUBLIC_NETWORK ?? 'testnet') as Network;
+    const network = (import.meta.env.VITE_PUBLIC_NETWORK ?? 'testnet') as Network;
 
     const rawMain = ADDRESSES[network].main;
     const rawPool = ADDRESSES[network].pool;
@@ -51,8 +51,8 @@ export function getConfig(): ContractConfig {
     if (!rawMain || !rawPool) {
         throw new Error(
             `Missing contract addresses for ${network}. ` +
-            `Set NEXT_PUBLIC_MAIN_CONTRACT_${network.toUpperCase()} and ` +
-            `NEXT_PUBLIC_POOL_CONTRACT_${network.toUpperCase()} in your .env file.`
+            `Set VITE_PUBLIC_MAIN_CONTRACT_${network.toUpperCase()} and ` +
+            `VITE_PUBLIC_POOL_CONTRACT_${network.toUpperCase()} in your .env file.`
         );
     }
 
@@ -79,7 +79,7 @@ export function shortAddress(address: string | Address, chars = 4): string {
 
 // Build a referral link for a wallet address
 export function referralLink(address: string | Address): string {
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://tongrid.space';
+    const appUrl = import.meta.env.VITE_PUBLIC_APP_URL ?? 'https://tongrid.space';
     const str    = typeof address === 'string' ? address : address.toString();
     return `${appUrl}/ref/${str}`;
 }

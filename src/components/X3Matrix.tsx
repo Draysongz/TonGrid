@@ -19,8 +19,9 @@ export default function X3Matrix({ level, slots, nextCycleTo, userAddress }: X3M
 
   const truncate = (addr: string) => `${addr.slice(0, 4)}...${addr.slice(-4)}`;
 
+
   return (
-    <div className="glass-card p-6 relative overflow-hidden">
+    <div className="glass-card p-6 relative overflow-hidden flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
@@ -39,10 +40,10 @@ export default function X3Matrix({ level, slots, nextCycleTo, userAddress }: X3M
         </div>
       </div>
 
-      {/* Matrix Visualization */}
-      <div className="relative py-8">
+      {/* Matrix Visualization - Flex grow to push cards down */}
+      <div className="relative py-8 flex-grow">
         {/* Connection Line */}
-        <div className="absolute top-1/2 left-12 right-12 h-0.5 bg-gradient-to-r from-tongrid-cyan/30 via-tongrid-cyan/50 to-tongrid-cyan/30 -translate-y-1/2" />
+       
         
         {/* Slots */}
         <div className="flex items-center justify-between relative z-10">
@@ -69,8 +70,8 @@ export default function X3Matrix({ level, slots, nextCycleTo, userAddress }: X3M
               <div className="text-center">
                 {slot.filled ? (
                   <>
-                    <p className="font-mono text-tongrid-white text-xs">{truncate(slot.address)}</p>
-                    <p className="font-mono text-tongrid-cyan text-sm font-semibold">+{slot.amount} TON</p>
+                    {/* <p className="font-mono text-tongrid-white text-xs">{truncate(slot.address)}</p>
+                    <p className="font-mono text-tongrid-cyan text-sm font-semibold">+0.85 TON</p> */}
                   </>
                 ) : (
                   <p className="text-tongrid-gray/40 text-xs">Empty</p>
@@ -79,7 +80,7 @@ export default function X3Matrix({ level, slots, nextCycleTo, userAddress }: X3M
 
               {/* Arrow (except last) */}
               {index < 2 && (
-                <div className="absolute" style={{ left: `${(index + 1) * 33.33}%`, transform: 'translateX(-50%)' }}>
+                <div  className="absolute" style={{ left: `${(index + 1) * 33.33}%`, transform: 'translateX(-50%)', top: `33%` }}>
                   <ArrowRight className="w-5 h-5 text-tongrid-cyan/50" />
                 </div>
               )}
@@ -98,8 +99,26 @@ export default function X3Matrix({ level, slots, nextCycleTo, userAddress }: X3M
         </div>
       </div>
 
+      {/* Earnings Summary */}
+      <div className="mt-6 p-4 rounded-xl bg-tongrid-cyan/10 border border-tongrid-cyan/30">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-tongrid-gray text-xs">Your X3 Earnings (Level {level})</p>
+            <p className="font-mono font-bold text-tongrid-cyan text-xl">
+              +{(filledCount * 0.9).toFixed(2)} TON
+            </p>
+          </div>
+          <div className="text-right">
+            <p className="text-tongrid-gray text-xs">Direct Slots</p>
+            <p className="font-mono text-tongrid-white text-lg">
+              {filledCount}/3
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Cycle Info */}
-      <div className={`mt-6 p-4 rounded-xl border ${
+      <div className={`mt-4 p-4 rounded-xl border ${
         isCycleReady 
           ? 'bg-tongrid-cyan/10 border-tongrid-cyan/30' 
           : 'bg-white/5 border-white/10'

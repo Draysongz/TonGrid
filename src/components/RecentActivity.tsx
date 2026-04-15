@@ -9,7 +9,7 @@ import {
 
 interface Activity {
   id: string;
-  type: 'x3_fill' | 'x6_fill' | 'upgrade' | 'payout' | 'cycle' | 'pool';
+  type: 'x3_fill' | 'x6_fill' | 'upgrade' | 'payout' | 'cycle' | 'pool' | 'register';
   description: string;
   amount: number;
   timestamp: string;
@@ -28,6 +28,8 @@ const getActivityIcon = (type: Activity['type']) => {
       return { icon: ArrowDownLeft, color: 'text-tongrid-violet', bg: 'bg-tongrid-violet/20' };
     case 'upgrade':
       return { icon: Layers, color: 'text-tongrid-blue', bg: 'bg-tongrid-blue/20' };
+    case 'register':
+      return { icon: Layers, color: 'text-tongrid-blue', bg: 'bg-tongrid-blue/20' };
     case 'payout':
       return { icon: ArrowUpRight, color: 'text-green-400', bg: 'bg-green-400/20' };
     case 'cycle':
@@ -44,6 +46,7 @@ const getActivityLabel = (type: Activity['type']) => {
     case 'x3_fill': return 'X3 Fill';
     case 'x6_fill': return 'X6 Spillover';
     case 'upgrade': return 'Level Up';
+    case 'register': return 'Registration';
     case 'payout': return 'Payout';
     case 'cycle': return 'Cycle';
     case 'pool': return 'Pool Share';

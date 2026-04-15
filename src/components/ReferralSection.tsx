@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { Copy, Check, Users, Share2, Link2, MessageCircle, Twitter } from 'lucide-react';
+import type { ReferralInfo } from '@/hooks/useContractEvents';
 
 interface ReferralData {
   link: string;
   directCount: number;
   totalCount: number;
+  referrals: ReferralInfo[]
+  totalEarned: number
 }
 
 interface ReferralSectionProps {

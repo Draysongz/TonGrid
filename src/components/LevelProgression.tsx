@@ -1,4 +1,5 @@
 import { Lock, Check, ChevronRight, Sparkles } from 'lucide-react';
+import { LEVEL_COSTS } from '@/lib/contract.config';
 
 interface Level {
   level: number;
@@ -14,7 +15,7 @@ interface LevelProgressionProps {
 }
 
 export default function LevelProgression({ currentLevel, onUpgrade }: LevelProgressionProps) {
-  const levelCosts = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768];
+  
 
   const getStatus = (level: number) => {
     if (level < currentLevel) return 'completed';
@@ -58,7 +59,7 @@ export default function LevelProgression({ currentLevel, onUpgrade }: LevelProgr
 
       {/* Level Grid */}
       <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
-        {levelCosts.map((cost, index) => {
+        {Object.entries(LEVEL_COSTS).map((cost, index) => {
           const level = index + 1;
           const status = getStatus(level);
           
@@ -119,7 +120,7 @@ export default function LevelProgression({ currentLevel, onUpgrade }: LevelProgr
             <div>
               <p className="text-tongrid-gray text-sm">Next Upgrade</p>
               <p className="font-mono text-tongrid-white text-lg">
-                Level {currentLevel + 1} • {levelCosts[currentLevel]} TON
+                Level {currentLevel + 1} • {LEVEL_COSTS[currentLevel+1]} TON
               </p>
             </div>
             <button 
