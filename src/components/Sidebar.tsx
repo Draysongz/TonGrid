@@ -42,12 +42,13 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
       {/* Logo */}
       <div className="h-16 flex items-center px-4 border-b border-white/5">
         {!collapsed && (
-          <span className="font-display font-bold text-xl">
-            Ton<span className="text-tongrid-cyan">Grid</span>
-          </span>
+          // <span className="font-display font-bold text-xl">
+          //   Ton<span className="text-tongrid-cyan">Grid</span>
+          // </span>
+          <img src='logo1.png' alt='TonGrid' />
         )}
         {collapsed && (
-          <span className="font-display font-bold text-xl text-tongrid-cyan">T</span>
+         <img src='logo1.png' alt='TonGrid' />
         )}
       </div>
 

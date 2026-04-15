@@ -301,7 +301,7 @@ function App() {
           {/* X3 Matrices Grid - All Levels */}
           <div>
             <h2 className="text-xl font-bold text-tongrid-white mb-4">X3 Matrices (All Levels)</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 overflow-x-auto">
               {allX3Matrices.map((matrix) => (
                 <X3Matrix
                   key={`x3-${matrix.level}`}
@@ -317,7 +317,7 @@ function App() {
           {/* X6 Matrices Grid - All Levels */}
           <div>
             <h2 className="text-xl font-bold text-tongrid-white mb-4">X6 Matrices (All Levels)</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 overflow-x-auto">
               {allX6Matrices.map((matrix) => (
                 <X6Matrix
                   key={`x6-${matrix.level}`}
