@@ -49,7 +49,7 @@ function App() {
   const contractEvents = useContractEvents();
 
   // Hooks for transactions
-  const { activateLevel }              = useActivateLevel();
+  const { activateLevel } = useActivateLevel();
   const { register, isLoading: isRegistering } = useRegister();
 
   // ─── Helpers: find level with most activity (most filled slots) ────────────────────────

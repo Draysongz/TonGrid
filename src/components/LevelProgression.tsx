@@ -59,8 +59,8 @@ export default function LevelProgression({ currentLevel, onUpgrade }: LevelProgr
 
       {/* Level Grid */}
       <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
-        {Object.entries(LEVEL_COSTS).map((cost, index) => {
-          const level = index + 1;
+        {Object.entries(LEVEL_COSTS).map(([levelStr, cost]) => {
+          const level = parseInt(levelStr);
           const status = getStatus(level);
           
           return (
