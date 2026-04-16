@@ -382,7 +382,7 @@ function App() {
             />
             <ReferralSection
               referralData={{
-                link:         `https://ton-grid.vercel.app/ref/${userData.address || ''}`,
+                link:         `https://ton-grid.vercel.app/?ref=${userData.address || ''}`,
                 directCount:  userData.directRefs,
                 totalCount:   userData.directRefs,
                 // Pass enriched referral list from events
